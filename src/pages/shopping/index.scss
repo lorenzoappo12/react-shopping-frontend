@@ -1,9 +1,14 @@
 .product-container{
+    height: 100vh;
     .product-header{
         background-color: #4d81b7;
         color: #fff;
         display: flex;
         justify-content: flex-start;
         padding: 20px;
+        margin-bottom: 20px;
+    }
+    .product-list{
+        height: calc(100% - 70px);
     }
 }

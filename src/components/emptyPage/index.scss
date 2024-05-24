@@ -1,0 +1,12 @@
+.emptyPageContainer{
+    .emptyPageBox{
+        border: 1px solid #ccc;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 300px;
+        justify-content: center;
+        margin-top: 100px;
+    }
+}

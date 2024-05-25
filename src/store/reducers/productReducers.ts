@@ -1,23 +1,58 @@
-import { Reducer } from 'redux';
-import {ProductState, ProductActionTypes } from '../types/productTypes';
 
-const initialState: ProductState = {
-  products: [],
-  loading: false,
-  error: null,
+import { createReducer } from '@reduxjs/toolkit';
+import {
+  fetchAllProductsDoneAction,
+  isDeletingAction,
+  isLoadingAction,
+  isSavingAction,
+  setDeleteModalOpenAction,
+  setDeleteProductDoneAction,
+  setSaveProductDoneAction,
+  setSelectedProductsAction,
+} from '../actions/productActions';
+import { IProductState } from '../models/index';
+
+export const productInitialState: IProductState = {
+  deleteModalOpen: false,
+  isLoading: false,
+  isSaving: false,
+  isDeleting: false,
+  selectedProducts: [],
 };
 
-const productReducer: Reducer<ProductState> = (state = initialState, action) => {
-  switch (action.type) {
-    case ProductActionTypes.FETCH_PRODUCTS:
-      return { ...state, loading: true };
-    case ProductActionTypes.FETCH_PRODUCTS_SUCCESS:
-      return { ...state, loading: false, products: action.payload, error: null };
-    case ProductActionTypes.FETCH_PRODUCTS_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
-
-export default productReducer;
+export default createReducer(productInitialState, (builder) =>
+  builder
+    .addCase(isLoadingAction, (state, { payload }) => ({
+      ...state,
+      isLoading: payload,
+    }))
+    .addCase(isSavingAction, (state, { payload }) => ({
+      ...state,
+      isSaving: payload,
+    }))
+    .addCase(isDeletingAction, (state, { payload }) => ({
+      ...state,
+      isDeleting: payload,
+    }))
+    .addCase(setDeleteModalOpenAction, (state, { payload }) => ({
+      ...state,
+      deleteModalOpen: payload,
+    }))
+    .addCase(setSelectedProductsAction, (state, { payload }) => ({
+      actionTriggerRefetching: undefined,
+      ...state,
+      selectedProducts: payload,
+    }))
+    .addCase(fetchAllProductsDoneAction, (state, { payload }) => ({
+      ...state,
+      productListResponse: payload,
+    }))
+    .addCase(setSaveProductDoneAction, (state, { payload }) => ({
+      ...state,
+      productSaveResponse: payload,
+    }))
+    .addCase(setDeleteProductDoneAction, (state, { payload }) => ({
+      ...state,
+      deleteProductResponse: payload,
+    })),
+);

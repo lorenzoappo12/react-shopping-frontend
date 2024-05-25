@@ -6,6 +6,7 @@ import {
   saveProductAction,
   setSaveProductDoneAction,
   isSavingAction,
+  fetchAllProductsAction,
 } from '../actions/productActions';
 
 export function* saveProductAsync(action: { payload: Product }): SagaIterator {
@@ -14,6 +15,7 @@ export function* saveProductAsync(action: { payload: Product }): SagaIterator {
 
     const response: IProductResponse = yield call(saveProduct, action.payload);
     yield put(setSaveProductDoneAction(response));
+    yield put(fetchAllProductsAction());
   } catch (error) {
     yield put(
       setSaveProductDoneAction({

@@ -11,7 +11,7 @@ import {
   setSelectedProductsAction,
 } from '../actions/productActions';
 
-export function* deleteProductAsync(action: { payload: string }): SagaIterator {
+export function* deleteProductAsync(action: { payload: number }): SagaIterator {
   try {
     yield put(isDeletingAction(true));
 
@@ -22,7 +22,7 @@ export function* deleteProductAsync(action: { payload: string }): SagaIterator {
 
     yield put(fetchAllProductsAction());
 
-    yield put(setSelectedProductsAction([]));
+    yield put(setSelectedProductsAction(null));
 
     yield put(setDeleteProductDoneAction(response));
   } catch (error) {

@@ -16,7 +16,7 @@ export const setDeleteModalOpenAction = createAction<boolean>(
   `${PRODUCT_PREFIX}_SET_DELETE_MODAL_OPEN`,
 );
 
-export const setSelectedProductsAction = createAction<ProductListItem[]>(
+export const setSelectedProductsAction = createAction<Product|null>(
   `${PRODUCT_PREFIX}_SET_SELECTED_PRODUCTS`,
 );
 
@@ -61,7 +61,7 @@ export const isDeletingAction = createAction<boolean>(
   `${PRODUCT_PREFIX}API/DELETE_PRODUCT_IS_DELETING`,
 );
 
-export const deleteProductAction = createAction<string>(
+export const deleteProductAction = createAction<number>(
   `${PRODUCT_PREFIX}/API/DELETE_PRODUCT`,
 );
 

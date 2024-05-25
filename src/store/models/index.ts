@@ -9,34 +9,34 @@ export type Product = {
 };
 
 export type ProductListItem = Product & {
-  id: string;
+    id: string;
 };
 
 export interface IFetchProductResponse {
-  products?: ProductListItem[];
-  error?: AxiosError | Error;
-  isSuccessful?: boolean;
+    products?: ProductListItem[];
+    error?: AxiosError | Error;
+    isSuccessful?: boolean;
 }
 
 export interface IProductResponse {
-  product: Product | undefined;
-  error?: AxiosError | Error;
-  isSuccessful?: boolean;
+    product: Product | undefined;
+    error?: AxiosError | Error;
+    isSuccessful?: boolean;
 }
 
 export interface IDeleteProductResponse {
-  id: string;
-  error?: AxiosError | Error;
-  isSuccessful?: boolean;
+    id: number;
+    error?: AxiosError | Error;
+    isSuccessful?: boolean;
 }
 
 export interface IProductState {
-  deleteModalOpen: boolean;
-  isLoading: boolean;
-  isSaving: boolean;
-  isDeleting: boolean;
-  productListResponse?: IFetchProductResponse;
-  selectedProducts: ProductListItem[];
-  productSaveResponse?: IProductResponse;
-  deleteProductResponse?: IDeleteProductResponse;
+    deleteModalOpen: boolean;
+    isLoading: boolean;
+    isSaving: boolean;
+    isDeleting: boolean;
+    productListResponse?: IFetchProductResponse;
+    selectedProduct: Product | null;
+    productSaveResponse?: IProductResponse;
+    deleteProductResponse?: IDeleteProductResponse;
 }

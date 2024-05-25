@@ -3,7 +3,7 @@ import { IDeleteProductResponse } from '../../models';
 import { isSuccessfulResponse, axiosApi } from '../../../utils';
 
 export const deleteProduct = async (
-  id: string,
+  id: number,
 ): Promise<IDeleteProductResponse> => {
   const url = process.env.REACT_APP_API_END_POINT ?? 'http://localhost:8000/products';
 

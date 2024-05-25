@@ -12,13 +12,13 @@ export const getProductsLoadingState = (state: TStoreState): boolean =>
 export const selectAllProducts = (state: TStoreState): ProductListItem[] =>
   state.product.productListResponse?.products || [];
 
-export const getSelectedProducts = (state: TStoreState): ProductListItem[] =>
-  state.product.selectedProducts;
+export const getSelectedProducts = (state: TStoreState): Product | null =>
+  state.product.selectedProduct;
 
-export const getEditProduct = (state: TStoreState): Product | undefined =>
-  state.product.selectedProducts.length > 0
-    ? state.product.selectedProducts[0]
-    : undefined;
+// export const getEditProduct = (state: TStoreState): Product | undefined =>
+//   state.product.selectedProduct.length > 0
+//     ? state.product.selectedProduct[0]
+//     : undefined;
 
 export const selectIsSaving = (state: TStoreState): boolean =>
   state.product.isSaving;

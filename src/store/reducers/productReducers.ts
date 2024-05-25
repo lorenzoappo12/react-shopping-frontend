@@ -17,7 +17,7 @@ export const productInitialState: IProductState = {
   isLoading: false,
   isSaving: false,
   isDeleting: false,
-  selectedProducts: [],
+  selectedProduct: null,
 };
 
 export default createReducer(productInitialState, (builder) =>
@@ -41,7 +41,7 @@ export default createReducer(productInitialState, (builder) =>
     .addCase(setSelectedProductsAction, (state, { payload }) => ({
       actionTriggerRefetching: undefined,
       ...state,
-      selectedProducts: payload,
+      selectedProduct: payload,
     }))
     .addCase(fetchAllProductsDoneAction, (state, { payload }) => ({
       ...state,

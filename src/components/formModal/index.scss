@@ -1,0 +1,42 @@
+.form-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    min-width: 300px;
+
+
+    .form-modal-header {
+        padding: 20px;
+        background-color: #fafafa;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .form-modal-body {
+        padding: 20px;
+
+        .textarea-desc {
+            width: -webkit-fill-available;
+            margin-bottom: 10px;
+            resize: vertical;
+            height: 80px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .select-quantity {
+            margin-bottom: 20px;
+        }
+    }
+
+    .form-modal-footer {
+        margin-top: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}

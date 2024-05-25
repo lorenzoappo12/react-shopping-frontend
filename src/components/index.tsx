@@ -1,1 +1,2 @@
-export { EmptyPage } from './emptyPage'
+export { EmptyPage } from './emptyPage';
+export { ProductForm } from './formModal'

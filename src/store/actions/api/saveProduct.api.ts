@@ -8,7 +8,7 @@ export const saveProduct = async (
   const url = process.env.REACT_APP_API_END_POINT ?? 'http://localhost:8000/products';
   try {
     const response = product.id
-      ? await axiosApi.put(`${url}`, product, {
+      ? await axiosApi.put(`${url}/${product.id}`, product, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',

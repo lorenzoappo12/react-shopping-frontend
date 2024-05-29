@@ -22,7 +22,7 @@ const style: SxProps<Theme> = {
   bgcolor: '#fff',
   border: '2px solid #fff',
   boxShadow: 24,
-  p: 4,
+  p: 2,
 };
 
 export const DeletePromptModal = () => {
@@ -57,13 +57,15 @@ export const DeletePromptModal = () => {
       >
         <Box sx={style} >
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Delete products?
+            Delete product?
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Are you sure you wish to delete the selected products?
+            Are you sure you wish to delete the product?
           </Typography>
-          <Button onClick={onDeleteProducts}>Delete</Button>
-          <Button onClick={handleClose}>Close</Button>
+          <Box display={'flex'} justifyContent={'flex-end'} marginTop={2}>
+            <Button onClick={onDeleteProducts}>Delete</Button>
+            <Button onClick={handleClose}>Close</Button>
+          </Box>
         </Box>
       </Modal>
     </div>

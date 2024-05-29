@@ -6,8 +6,9 @@ import { Product } from "../../store/models";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutline';
 import { setDeleteModalOpenAction, setSelectedProductsAction } from "../../store/actions/productActions";
+import { ProductListprops } from './../../type/shopping.type';
 
-export const ProductList = ({ addItemOnclick }: { addItemOnclick: () => void }) => {
+export const ProductList = ({ addItemOnclick, setSelectedProduct }: ProductListprops) => {
     const data = useSelector(selectAllProducts);
     const dispatch = useDispatch();
 
@@ -41,7 +42,7 @@ export const ProductList = ({ addItemOnclick }: { addItemOnclick: () => void }) 
                             <Box>
                                 <Tooltip title="edit">
                                     <IconButton
-                                        onClick={() => { console.log('>>edit') }}
+                                        onClick={() => { setSelectedProduct(product); addItemOnclick() }}
                                     >
                                         <EditIcon sx={{ color: '#959393' }} />
                                     </IconButton>

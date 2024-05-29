@@ -18,3 +18,8 @@ export interface ProductFormProps {
     onSubmit: (product: Product) => void;
     initialProduct?: Product;
 }
+
+export interface ProductListprops {
+    addItemOnclick: () => void,
+    setSelectedProduct: (product: Product) => void
+}

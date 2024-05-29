@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel, FormControlLabel, Checkbox } from '@mui/material';
 import { Product, ProductFormProps } from '../../type/shopping.type';
 import './index.scss'
@@ -18,6 +18,16 @@ export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmi
             [name]: value,
         }));
     };
+
+    useEffect( () => {
+        if(initialProduct){
+            setProduct(initialProduct)
+        }
+        else {
+            setProduct(product)
+        }
+
+    },[initialProduct])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

@@ -5,7 +5,7 @@ import './index.scss'
 
 
 export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmit, initialProduct }) => {
-    const [product, setProduct] = useState<Product>(initialProduct || { name: '', description: '', quantity: '', isPurchase: false });
+    const [product, setProduct] = useState<Product>({ name: '', description: '', quantity: '', isPurchase: false });
     const [charCount, setCharCount] = useState<number>(initialProduct ? initialProduct.description.length : 0);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -19,15 +19,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmi
         }));
     };
 
-    useEffect( () => {
-        if(initialProduct){
-            setProduct(initialProduct)
-        }
-        else {
-            setProduct(product)
-        }
-
-    },[initialProduct])
+    useEffect(() => {
+        setProduct(initialProduct ?? { name: '', description: '', quantity: '', isPurchase: false })
+    }, [initialProduct])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

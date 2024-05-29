@@ -11,7 +11,7 @@ export const Shopping = () => {
     const [open, setOpen] = useState<boolean>(false);
     const dispatch = useDispatch();
     const data = useSelector(selectAllProducts);
-    const [selectedProduct, setSelectedProduct] = useState<Product>();
+    const [selectedProduct, setSelectedProduct] = useState<Product|undefined>();
 
     useEffect(() => {
         dispatch(setSelectedProductsAction(null));

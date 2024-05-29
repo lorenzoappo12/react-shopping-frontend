@@ -21,7 +21,7 @@ export const ProductList = ({ addItemOnclick, setSelectedProduct }: ProductListp
             <Box className="product-list-header">
                 <Typography className="product-title" fontWeight={600} fontSize={'20px'}>Your Items</Typography>
                 <Box className="button-item">
-                    <Button variant="contained" onClick={addItemOnclick}>Add Item</Button>
+                    <Button variant="contained" onClick={() => { setSelectedProduct(); addItemOnclick() }}>Add Item</Button>
                 </Box>
             </Box>
             <Box className='product-list-body'>

@@ -21,5 +21,5 @@ export interface ProductFormProps {
 
 export interface ProductListprops {
     addItemOnclick: () => void,
-    setSelectedProduct: (product: Product) => void
+    setSelectedProduct: (product?: Product) => void
 }

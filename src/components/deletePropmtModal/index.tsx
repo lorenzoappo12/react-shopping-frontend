@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { SxProps } from '@mui/system';
-import { Theme } from '@mui/material';
+import { AlertProps, Theme } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProductAction, setDeleteModalOpenAction } from '../../store/actions/productActions';
 import {
@@ -11,7 +11,8 @@ import {
   getDeleteProductResponse,
   getSelectedProducts,
 } from '../../store/selectors';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { CommonSnakbar } from '../snakebar';
 
 const style: SxProps<Theme> = {
   position: 'absolute',
@@ -30,6 +31,9 @@ export const DeletePromptModal = () => {
   const isOpen = useSelector(getDeleteModalOpen);
   const selectedProduct = useSelector(getSelectedProducts);
   const deleteResponse = useSelector(getDeleteProductResponse);
+  const [message, setMessage] = useState<string>('')
+  const [open, setOpen] = useState<boolean>(false)
+  const [severity, setseverity] = useState<AlertProps['severity']>('info')
 
   const onDeleteProducts = () => {
     const { id } = selectedProduct ?? {};
@@ -44,12 +48,20 @@ export const DeletePromptModal = () => {
     if (deleteResponse?.isSuccessful === true) {
       dispatch(setDeleteModalOpenAction(false));
     } else if (deleteResponse?.isSuccessful === false) {
-      alert(`Failed to save`);
+      setseverity('error');
+      setMessage(deleteResponse?.error?.message ?? '')
+      setOpen(true)
     }
   }, [deleteResponse, dispatch]);
 
   return (
     <div>
+      <CommonSnakbar
+        message={message}
+        open={open}
+        severity={severity}
+        setOpen={setOpen}
+      />
       <Modal
         open={isOpen}
         aria-labelledby="modal-modal-title"

@@ -13,7 +13,6 @@ export const ProductList = ({ addItemOnclick, setSelectedProduct, onSubmit }: Pr
     const dispatch = useDispatch();
 
     const isLoading = useSelector(getProductsLoadingState);
-    const onDeleteProduct = () => { }
 
     return (
         <Box className="product">

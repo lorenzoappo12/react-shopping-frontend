@@ -27,7 +27,7 @@ export const Shopping = () => {
             <ProductForm onClose={() => {setOpen(false)}} open={open} onSubmit={onSubmit} initialProduct={selectedProduct} />
             <DeletePromptModal />
             <Box className='product-header'>
-                <Typography>Shopping List</Typography>
+                <Typography fontFamily={ "'Dosis', 'sans-serif'"}>SHOPPING LIST</Typography>
             </Box>
             <Container maxWidth="lg" className="product-list">
                 {data.length > 0 ?

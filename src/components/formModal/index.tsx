@@ -33,14 +33,14 @@ export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmi
         <Modal open={open} onClose={onClose}>
             <div className='form-modal'>
                 <Box className='form-modal-header'>
-                    <Typography>
+                    <Typography fontFamily={"'Nunito', 'sans-serif'"}>
                         Shopping List
                     </Typography>
                 </Box>
                 <Box className='form-modal-body'>
 
-                    <Typography>{initialProduct ? 'Edit an item' : 'Add an item'}</Typography>
-                    <Typography color={'#666c72'} marginBottom={1}>{initialProduct ? 'Edit your new item below' : 'Add your new item below'}</Typography>
+                    <Typography fontFamily={"'Nunito', 'sans-serif'"}>{initialProduct ? 'Edit an item' : 'Add an item'}</Typography>
+                    <Typography fontFamily={"'Nunito', 'sans-serif'"} color={'#666c72'} marginBottom={1}>{initialProduct ? 'Edit your new item below' : 'Add your new item below'}</Typography>
                     <form onSubmit={handleSubmit}>
                         <TextField
                             fullWidth
@@ -59,7 +59,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmi
                             className='textarea-desc'
                         />
                         <FormControl fullWidth className='select-quantity'>
-                            <InputLabel id="demo-simple-select-label">How many?</InputLabel>
+                            <InputLabel id="demo-simple-select-label" sx={{ fontFamily: "'Nunito', 'sans-serif'" }}>How many?</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
@@ -69,7 +69,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmi
                                     ...prevProduct,
                                     quantity: e.target.value,
                                 }))}
-                            >
+                                sx={{ fontFamily: "'Nunito', 'sans-serif'" }}                            >
                                 <MenuItem value={1}>1</MenuItem>
                                 <MenuItem value={2}>2</MenuItem>
                                 <MenuItem value={3}>3</MenuItem>
@@ -80,18 +80,18 @@ export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmi
                             onChange={(e) => setProduct((prevProduct) => ({
                                 ...prevProduct,
                                 completed: e.currentTarget.checked,
-                            }))} />} label="Purchased" sx={{ color: '#bcbbbb' }} /> : ''}
+                            }))} />} label="Purchased" sx={{ color: '#bcbbbb', fontFamily: "'Nunito', 'sans-serif'" }} /> : ''}
                         <Box className='form-modal-footer'>
-                            <Button onClick={onClose} sx={{ color: '#000', marginRight: '20px', fontWeight: '500', fontSize: '12px' }}>
+                            <Button onClick={onClose} sx={{ color: '#000', marginRight: '20px', fontWeight: '500', fontSize: '12px', fontFamily: "'Nunito', 'sans-serif'" }}>
                                 cancel
                             </Button>
-                            <Button type="submit" variant="contained" color="primary" sx={{ fontSize: '12px' }}>
+                            <Button type="submit" variant="contained" color="primary" sx={{ fontSize: '12px', fontFamily: "'Nunito', 'sans-serif'" }}>
                                 {initialProduct ? 'Save Item' : 'Add Task'}
                             </Button>
                         </Box>
                     </form>
                 </Box>
-               
+
             </div>
         </Modal>
     );

@@ -56,15 +56,15 @@ export const DeletePromptModal = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} >
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography fontFamily={"'Nunito', 'sans-serif'"} id="modal-modal-title" variant="h6" component="h2">
             Delete product?
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography fontFamily={"'Nunito', 'sans-serif'"} id="modal-modal-description" sx={{ mt: 2 }}>
             Are you sure you wish to delete the product?
           </Typography>
           <Box display={'flex'} justifyContent={'flex-end'} marginTop={2}>
-            <Button onClick={onDeleteProducts}>Delete</Button>
-            <Button onClick={handleClose}>Close</Button>
+            <Button sx={{ fontFamily: "'Nunito', 'sans-serif'" }} onClick={onDeleteProducts}>Delete</Button>
+            <Button sx={{ fontFamily: "'Nunito', 'sans-serif'" }} onClick={handleClose}>Close</Button>
           </Box>
         </Box>
       </Modal>

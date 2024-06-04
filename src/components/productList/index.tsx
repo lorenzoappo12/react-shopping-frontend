@@ -13,14 +13,14 @@ export const ProductList = ({ addItemOnclick, setSelectedProduct, onSubmit }: Pr
     const dispatch = useDispatch();
 
     const isLoading = useSelector(getProductsLoadingState);
-    const onDeleteProduct = () => {}
-    
+    const onDeleteProduct = () => { }
+
     return (
         <Box className="product">
             <Box className="product-list-header">
-                <Typography className="product-title" fontWeight={600} fontSize={'20px'}>Your Items</Typography>
+                <Typography className="product-title" fontWeight={600} fontSize={'20px'} sx={{ fontFamily: "'Nunito', 'sans-serif'" }}>Your Items</Typography>
                 <Box className="button-item">
-                    <Button variant="contained" onClick={() => { setSelectedProduct(); addItemOnclick() }}>Add Item</Button>
+                    <Button variant="contained" sx={{ textTransform: 'none', fontFamily: "'Nunito', 'sans-serif'" }} onClick={() => { setSelectedProduct(); addItemOnclick() }}>Add Item</Button>
                 </Box>
             </Box>
             <Box className='product-list-body'>
@@ -30,10 +30,10 @@ export const ProductList = ({ addItemOnclick, setSelectedProduct, onSubmit }: Pr
                             <Box className='product-info'>
                                 <Checkbox checked={product.completed} onChange={() => onSubmit({ ...product, completed: !product.completed })} />
                                 <Box>
-                                    <Typography fontWeight={600} sx={{ textDecoration: product.completed ? 'line-through' : 'none' }}>
+                                    <Typography fontFamily={"'Nunito', 'sans-serif'"} fontWeight={600} sx={{ textDecoration: product.completed ? 'line-through' : 'none' }}>
                                         {product.name}
                                     </Typography>
-                                    <Typography color={'#959393'} sx={{ textDecoration: product.completed ? 'line-through' : 'none' }}>
+                                    <Typography fontFamily={"'Nunito', 'sans-serif'"} color={'#959393'} sx={{ textDecoration: product.completed ? 'line-through' : 'none' }}>
                                         {product.description}
                                     </Typography>
                                 </Box>

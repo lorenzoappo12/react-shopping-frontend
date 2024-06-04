@@ -47,6 +47,9 @@ export const DeletePromptModal = () => {
   useEffect(() => {
     if (deleteResponse?.isSuccessful === true) {
       dispatch(setDeleteModalOpenAction(false));
+      setseverity('success');
+      setMessage('Successfully deleted')
+      setOpen(true)
     } else if (deleteResponse?.isSuccessful === false) {
       setseverity('error');
       setMessage(deleteResponse?.error?.message ?? '')

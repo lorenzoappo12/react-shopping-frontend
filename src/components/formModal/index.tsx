@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel, FormControlLabel, Checkbox, Snackbar } from '@mui/material';
+import { Modal, TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel, FormControlLabel, Checkbox } from '@mui/material';
 import { Product, ProductFormProps } from '../../type/shopping.type';
 import './index.scss'
 
@@ -7,7 +7,7 @@ import './index.scss'
 export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmit, initialProduct }) => {
     const [product, setProduct] = useState<Product>(initialProduct ?? { name: '', description: '', quantity: '', completed: false });
     const [charCount, setCharCount] = useState<number>(initialProduct ? initialProduct.description.length : 0);
-
+    
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
         if (name === 'description') {

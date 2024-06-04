@@ -5,7 +5,7 @@ export type Product = {
     name: string;
     description: string;
     quantity: string;
-    isPurchase?: boolean
+    completed?: boolean
 };
 
 export type ProductListItem = Product & {

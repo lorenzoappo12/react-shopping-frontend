@@ -8,14 +8,13 @@ import DeleteIcon from '@mui/icons-material/DeleteOutline';
 import { setDeleteModalOpenAction, setSelectedProductsAction } from "../../store/actions/productActions";
 import { ProductListprops } from './../../type/shopping.type';
 
-export const ProductList = ({ addItemOnclick, setSelectedProduct }: ProductListprops) => {
+export const ProductList = ({ addItemOnclick, setSelectedProduct, onSubmit }: ProductListprops) => {
     const data = useSelector(selectAllProducts);
     const dispatch = useDispatch();
 
     const isLoading = useSelector(getProductsLoadingState);
-    const onDeleteProduct = () => {
-
-    }
+    const onDeleteProduct = () => {}
+    
     return (
         <Box className="product">
             <Box className="product-list-header">
@@ -29,12 +28,12 @@ export const ProductList = ({ addItemOnclick, setSelectedProduct }: ProductListp
                     data.length > 0 ? data.map((product: Product) => (
                         <Box className='product-list'>
                             <Box className='product-info'>
-                                <Checkbox />
+                                <Checkbox checked={product.completed} onChange={() => onSubmit({ ...product, completed: !product.completed })} />
                                 <Box>
-                                    <Typography fontWeight={600}>
+                                    <Typography fontWeight={600} sx={{ textDecoration: product.completed ? 'line-through' : 'none' }}>
                                         {product.name}
                                     </Typography>
-                                    <Typography color={'#959393'}>
+                                    <Typography color={'#959393'} sx={{ textDecoration: product.completed ? 'line-through' : 'none' }}>
                                         {product.description}
                                     </Typography>
                                 </Box>

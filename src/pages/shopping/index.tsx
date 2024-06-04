@@ -24,14 +24,14 @@ export const Shopping = () => {
 
     return (
         <div className="product-container">
-            <ProductForm onClose={() => setOpen(false)} open={open} onSubmit={onSubmit} initialProduct={selectedProduct} />
+            <ProductForm onClose={() => {setOpen(false)}} open={open} onSubmit={onSubmit} initialProduct={selectedProduct} />
             <DeletePromptModal />
             <Box className='product-header'>
                 <Typography>Shopping List</Typography>
             </Box>
             <Container maxWidth="lg" className="product-list">
                 {data.length > 0 ?
-                    <ProductList addItemOnclick={() => setOpen(true)} setSelectedProduct={setSelectedProduct} /> :
+                    <ProductList addItemOnclick={() => setOpen(true)} setSelectedProduct={setSelectedProduct} onSubmit={onSubmit}/> :
                     <EmptyPage buttonClick={() => setOpen(true)} buttonText="Add your first item" message="Your shopping list is empty :(" />
                 }
             </Container>

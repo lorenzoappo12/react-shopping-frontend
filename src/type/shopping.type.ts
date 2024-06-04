@@ -9,7 +9,7 @@ export interface Product {
     name: string;
     description: string;
     quantity: string;
-    isPurchase?: boolean
+    completed?: boolean
 }
 
 export interface ProductFormProps {
@@ -21,5 +21,6 @@ export interface ProductFormProps {
 
 export interface ProductListprops {
     addItemOnclick: () => void,
-    setSelectedProduct: (product?: Product) => void
+    setSelectedProduct: (product?: Product) => void,
+    onSubmit: (product: Product) => void;
 }

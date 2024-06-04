@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel, FormControlLabel, Checkbox } from '@mui/material';
+import { Modal, TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel, FormControlLabel, Checkbox, Snackbar } from '@mui/material';
 import { Product, ProductFormProps } from '../../type/shopping.type';
 import './index.scss'
 
 
 export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmit, initialProduct }) => {
-    const [product, setProduct] = useState<Product>({ name: '', description: '', quantity: '', isPurchase: false });
+    const [product, setProduct] = useState<Product>(initialProduct ?? { name: '', description: '', quantity: '', completed: false });
     const [charCount, setCharCount] = useState<number>(initialProduct ? initialProduct.description.length : 0);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -18,14 +18,14 @@ export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmi
             [name]: value,
         }));
     };
-
     useEffect(() => {
-        setProduct(initialProduct ?? { name: '', description: '', quantity: '', isPurchase: false })
+        setProduct(initialProduct ?? { name: '', description: '', quantity: '', completed: false })
     }, [initialProduct])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         onSubmit(product);
+        setProduct({ name: '', description: '', quantity: '', completed: false })
         onClose();
     };
 
@@ -75,11 +75,12 @@ export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmi
                                 <MenuItem value={3}>3</MenuItem>
                             </Select>
                         </FormControl>
-                        <FormControlLabel control={<Checkbox sx={{ color: '#bcbbbb' }}
+                        {initialProduct ? <FormControlLabel control={<Checkbox sx={{ color: '#bcbbbb' }}
+                            checked={product.completed}
                             onChange={(e) => setProduct((prevProduct) => ({
                                 ...prevProduct,
-                                isPurchase: e.currentTarget.checked,
-                            }))} />} label="Purchased" sx={{ color: '#bcbbbb' }} />
+                                completed: e.currentTarget.checked,
+                            }))} />} label="Purchased" sx={{ color: '#bcbbbb' }} /> : ''}
                         <Box className='form-modal-footer'>
                             <Button onClick={onClose} sx={{ color: '#000', marginRight: '20px', fontWeight: '500', fontSize: '12px' }}>
                                 cancel
@@ -90,7 +91,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ open, onClose, onSubmi
                         </Box>
                     </form>
                 </Box>
-
+               
             </div>
         </Modal>
     );
